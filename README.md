@@ -1,20 +1,20 @@
 # Containerized AI Agent PoC 🚀
 
-A Proof of Concept (PoC) demonstrating a microservice-based architecture for deploying AI Agents. Built with **FastAPI**, **Python**, and **Docker**.
+> A microservice-based architecture for deploying AI Agents. Built with FastAPI, Python, and Docker to demonstrate scalable, production-ready AI deployment patterns.
 
-## 📖 Overview
+## The Problem
 
-This project showcases a scalable approach to building and deploying AI agents. By wrapping the agent's logic in a high-performance REST API (FastAPI) and containerizing the entire application (Docker), we ensure the agent is easily deployable, testable, and capable of integrating into larger, cloud-native systems.
+AI experiments in Jupyter notebooks don't scale. To be useful in a production environment, an AI agent needs to be stateless, accessible via a standardized API, and easily deployable across different environments without dependency hell.
+
+## The Solution
+
+This PoC wraps an AI agent's logic in a high-performance **FastAPI** REST interface and containerizes the entire application using **Docker**. This ensures the agent is easily deployable, testable, and capable of integrating into larger, cloud-native systems.
 
 Currently, the agent uses a simulated asynchronous logic engine, making it perfect for demonstrating architectural patterns without requiring external API keys or heavy local models.
 
-## ✨ Features
+## Why This Over the Obvious Alternative
 
-- **FastAPI Backend**: High-performance, asynchronous REST API.
-- **Automatic Documentation**: Interactive Swagger UI generated out-of-the-box.
-- **Robust Validation**: Pydantic models ensure all inputs and outputs are strictly typed.
-- **Containerized**: Fully Dockerized for "works on my machine" consistency.
-- **Clean Architecture**: Separation of concerns between API routing, data modeling, and core agent logic.
+Many developers just use Flask for AI APIs. By choosing **FastAPI**, we get asynchronous request handling out of the box (crucial for long-running LLM inferences), automatic OpenAPI/Swagger documentation, and strict type validation via Pydantic. By fully Dockerizing it, we solve the "works on my machine" problem that plagues Python AI development.
 
 ## 🛠️ Tech Stack
 
@@ -23,35 +23,20 @@ Currently, the agent uses a simulated asynchronous logic engine, making it perfe
 - **Server**: Uvicorn
 - **Containerization**: Docker & Docker Compose
 
+## Decision Log
+
+| Decision | Rationale |
+|----------|-----------|
+| FastAPI over Flask/Django | Native async support is critical for I/O bound AI workloads; Pydantic ensures type-safe LLM inputs. |
+| Docker Compose orchestration | Provides a single command to spin up the agent and any future dependencies (like a vector DB or Redis cache). |
+| Layered Architecture | Separates API routing, data modeling, and core agent logic, allowing the AI model to be swapped without changing the API contract. |
+
 ## 🚀 Getting Started
 
-### Prerequisites
-- Docker and Docker Compose installed on your system.
-
-### Running the Application
-
-1. **Clone the repository** (or navigate to the project directory).
-2. **Start the container** using Docker Compose:
-   ```bash
-   docker-compose up -d --build
-   ```
-3. **Access the API**: 
-   The service will be running on `http://localhost:8000`.
-
-### Interacting with the Agent
-
-The easiest way to interact with the API is through the automatically generated Swagger UI.
-
-1. Open your browser and navigate to: `http://localhost:8000/docs`
-2. Locate the `POST /agent/task` endpoint.
-3. Click "Try it out" and send a JSON payload like this:
-   ```json
-   {
-     "task_id": "test-task-123",
-     "prompt": "Hello! Can you summarize this?"
-   }
-   ```
-4. Check the `GET /agent/history/{task_id}` endpoint to retrieve previous interactions.
+```bash
+docker-compose up -d --build
+```
+Access the interactive Swagger UI at `http://localhost:8000/docs` to interact with the agent.
 
 ## 📁 Project Structure
 
@@ -59,4 +44,4 @@ For a detailed breakdown of the codebase and technical design decisions, please 
 
 ## 👨‍💻 Author
 
-*Created as a Proof of Concept for resume showcasing.*
+*Created as a Proof of Concept to demonstrate production-ready AI deployment architectures.*
