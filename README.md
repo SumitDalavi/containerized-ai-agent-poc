@@ -42,6 +42,67 @@ Access the interactive Swagger UI at `http://localhost:8000/docs` to interact wi
 
 For a detailed breakdown of the codebase and technical design decisions, please refer to the [Architecture Documentation](docs/ARCHITECTURE.md).
 
+
+## ðŸ“‹ Prerequisites
+
+| Tool | Version | Purpose |
+|------|---------|---------|
+| [Docker](https://www.docker.com/) | >= 24.x | Container runtime |
+| [Docker Compose](https://docs.docker.com/compose/) | >= 2.x | Multi-container orchestration |
+| [curl](https://curl.se/) or [Postman](https://www.postman.com/) | Any | API testing |
+
+## ðŸš€ Step-by-Step Setup
+
+```bash
+# 1. Clone the repository
+git clone https://github.com/SumitDalavi/containerized-ai-agent-poc.git
+cd containerized-ai-agent-poc
+
+# 2. Build and start the service
+docker-compose up -d --build
+
+# 3. Verify it's running
+docker ps | grep fastapi-ai-agent
+```
+
+The API is now available at **http://localhost:8000**
+
+## ðŸ§ª Usage & Demo
+
+### Interactive API Docs
+Open **http://localhost:8000/docs** in your browser for the Swagger UI.
+
+### API Endpoints
+
+```bash
+# Health check
+curl http://localhost:8000/health
+
+# Submit a task to the AI Agent
+curl -X POST http://localhost:8000/agent/task \
+  -H "Content-Type: application/json" \
+  -d '{"prompt": "Analyze the security posture of my Kubernetes cluster", "context": "production"}'
+
+# Retrieve task history
+curl http://localhost:8000/agent/history/{task_id}
+```
+
+## âœ… Verification
+
+```bash
+# 1. Check container is healthy
+curl -s http://localhost:8000/health | jq .
+# Expected: {"status": "healthy", "agent_name": "..."}
+
+# 2. Submit a test task and verify response
+curl -s -X POST http://localhost:8000/agent/task \
+  -H "Content-Type: application/json" \
+  -d '{"prompt": "test"}' | jq .
+
+# 3. Stop the service
+docker-compose down
+```
+
 ## 👨‍💻 Author
 
 *Created as a Proof of Concept to demonstrate production-ready AI deployment architectures.*
