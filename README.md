@@ -2,6 +2,9 @@
 
 > A microservice-based architecture for deploying AI Agents. Built with FastAPI, Python, and Docker to demonstrate scalable, production-ready AI deployment patterns.
 
+> **⚠️ PoC Note:** This project uses a simulated async logic engine — no real LLM backend is connected. It demonstrates containerization patterns, API design, and production-ready project structure.
+
+
 ## The Problem
 
 AI experiments in Jupyter notebooks don't scale. To be useful in a production environment, an AI agent needs to be stateless, accessible via a standardized API, and easily deployable across different environments without dependency hell.
@@ -43,7 +46,7 @@ Access the interactive Swagger UI at `http://localhost:8000/docs` to interact wi
 For a detailed breakdown of the codebase and technical design decisions, please refer to the [Architecture Documentation](docs/ARCHITECTURE.md).
 
 
-## ðŸ“‹ Prerequisites
+## 📋 Prerequisites
 
 | Tool | Version | Purpose |
 |------|---------|---------|
@@ -51,7 +54,7 @@ For a detailed breakdown of the codebase and technical design decisions, please 
 | [Docker Compose](https://docs.docker.com/compose/) | >= 2.x | Multi-container orchestration |
 | [curl](https://curl.se/) or [Postman](https://www.postman.com/) | Any | API testing |
 
-## ðŸš€ Step-by-Step Setup
+## 🚀 Step-by-Step Setup
 
 ```bash
 # 1. Clone the repository
@@ -67,7 +70,7 @@ docker ps | grep fastapi-ai-agent
 
 The API is now available at **http://localhost:8000**
 
-## ðŸ§ª Usage & Demo
+## 🧪 Usage & Demo
 
 ### Interactive API Docs
 Open **http://localhost:8000/docs** in your browser for the Swagger UI.
@@ -87,7 +90,7 @@ curl -X POST http://localhost:8000/agent/task \
 curl http://localhost:8000/agent/history/{task_id}
 ```
 
-## âœ… Verification
+## ✅ Verification
 
 ```bash
 # 1. Check container is healthy
@@ -105,4 +108,9 @@ docker-compose down
 
 ## 👨‍💻 Author
 
-*Created as a Proof of Concept to demonstrate production-ready AI deployment architectures.*
+**Sumit Dalavi** — Senior DevSecOps / Platform Engineer
+[GitHub](https://github.com/SumitDalavi) | [LinkedIn](https://in.linkedin.com/in/sumit-dalavi-762838129)
+
+---
+
+*Built with a focus on production-grade patterns, not toy demos.*
