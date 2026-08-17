@@ -1,5 +1,16 @@
 # Architecture: Containerized AI Agents
 
+## System Diagram
+The following Mermaid.js sequence diagram maps the core workflow and interactions:
+
+```mermaid
+sequenceDiagram
+    Host->>Container: Mount minimal paths
+Container->>Runtime: Execute sandbox
+Runtime-->>Host: Stdout
+```
+
+
 This document provides a detailed overview of the architectural design, directory structure, and technical choices made in the Containerized AI Agent PoC project.
 
 ## Overview
