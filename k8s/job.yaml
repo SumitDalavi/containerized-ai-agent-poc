@@ -1,0 +1,21 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: ai-agent-job
+spec:
+  template:
+    spec:
+      containers:
+      - name: ai-agent
+        image: containerized-ai-agent:latest
+        imagePullPolicy: Never
+        env:
+        - name: AGENT_PROMPT
+          value: "Summarize the latest logs"
+        - name: OPENAI_API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: openai-secret
+              key: api-key
+      restartPolicy: Never
+  backoffLimit: 4
