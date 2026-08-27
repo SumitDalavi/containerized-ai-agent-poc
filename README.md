@@ -114,3 +114,9 @@ docker-compose down
 ---
 
 *Built with a focus on production-grade patterns, not toy demos.*
+
+## CI & Reliability Updates (August 2026)
+
+- **CI Pipeline Remediation:** Successfully resolved all CI/CD pipeline failures.
+- **Specific Fix:** Fixed async test failures by integrating pytest-asyncio.
+- **Status:** 🟩 Passing
