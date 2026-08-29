@@ -120,3 +120,18 @@ docker-compose down
 - **CI Pipeline Remediation:** Successfully resolved all CI/CD pipeline failures.
 - **Specific Fix:** Fixed async test failures by integrating pytest-asyncio.
 - **Status:** 🟩 Passing
+
+
+## 📖 Overview
+
+This project showcases a scalable approach to building and deploying AI agents. By wrapping the agent's logic in a high-performance REST API (FastAPI) and containerizing the entire application (Docker), we ensure the agent is easily deployable, testable, and capable of integrating into larger, cloud-native systems.
+
+Currently, the agent uses a simulated asynchronous logic engine, making it perfect for demonstrating architectural patterns without requiring external API keys or heavy local models.
+
+## ✨ Features
+
+- **FastAPI Backend**: High-performance, asynchronous REST API.
+- **Automatic Documentation**: Interactive Swagger UI generated out-of-the-box.
+- **Robust Validation**: Pydantic models ensure all inputs and outputs are strictly typed.
+- **Containerized**: Fully Dockerized for "works on my machine" consistency.
+- **Clean Architecture**: Separation of concerns between API routing, data modeling, and core agent logic.
