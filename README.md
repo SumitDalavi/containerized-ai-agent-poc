@@ -1,3 +1,6 @@
+> **NOTE:** This repository is an archival lab or partial prototype. It is not actively maintained and should not be used as a reference for production-grade deployments or performance benchmarks.
+
+
 # Containerized AI Agent PoC 🚀
 
 > A microservice-based architecture for deploying AI Agents. Built with FastAPI, Python, and Docker to demonstrate scalable, production-ready AI deployment patterns.
@@ -113,7 +116,7 @@ docker-compose down
 
 ---
 
-*Built with a focus on production-grade patterns, not toy demos.*
+*Built with a focus on robust patterns, not toy demos.*
 
 ## CI & Reliability Updates (August 2026)
 
