@@ -4,6 +4,10 @@
 # Containerized AI Agent PoC 🚀
 
 [![Release](https://img.shields.io/github/v/release/SumitDalavi/containerized-ai-agent-poc?color=blue&logo=github)](https://github.com/SumitDalavi/containerized-ai-agent-poc/releases)
+[![Release Workflow](https://github.com/SumitDalavi/containerized-ai-agent-poc/actions/workflows/release.yml/badge.svg)](https://github.com/SumitDalavi/containerized-ai-agent-poc/actions/workflows/release.yml)
+[![SBOM](https://img.shields.io/badge/SBOM-SPDX%20JSON-blueviolet?logo=spdx)](https://github.com/SumitDalavi/containerized-ai-agent-poc/releases)
+
+[![Release](https://img.shields.io/github/v/release/SumitDalavi/containerized-ai-agent-poc?color=blue&logo=github)](https://github.com/SumitDalavi/containerized-ai-agent-poc/releases)
 [![SBOM](https://img.shields.io/badge/SBOM-SPDX%20JSON-blueviolet?logo=spdx)](https://github.com/SumitDalavi/containerized-ai-agent-poc/releases)
 
 > A microservice-based architecture for deploying AI Agents. Built with FastAPI, Python, and Docker to demonstrate scalable, production-ready AI deployment patterns.
@@ -142,7 +146,7 @@ Currently, the agent uses a simulated asynchronous logic engine, making it perfe
 - **Containerized**: Fully Dockerized for "works on my machine" consistency.
 - **Clean Architecture**: Separation of concerns between API routing, data modeling, and core agent logic.
 
-## Release & Verification
+## Release & Security Verification
 
 The project includes an automated DevSecOps release pipeline (`.github/workflows/release.yml`) triggered on semantic version tags (`v*.*.*`).
 
@@ -162,3 +166,10 @@ gh release view v0.1.0 --repo SumitDalavi/containerized-ai-agent-poc
 gh release download v0.1.0 --repo SumitDalavi/containerized-ai-agent-poc --pattern "sbom.spdx.json"
 cat sbom.spdx.json | jq .
 ```
+
+## Documentation
+
+- [Architecture](docs/ARCHITECTURE.md)
+- [Runbook](docs/runbook.md)
+- [Decisions](docs/decisions.md)
+- [Changelog](docs/changelog.md)
