@@ -1,19 +1,18 @@
 > **NOTE:** This repository is an archival lab or partial prototype. It is not actively maintained and should not be used as a reference for production-grade deployments or performance benchmarks.
 
-
 # Containerized AI Agent PoC 🚀
 
-[![Release](https://img.shields.io/github/v/release/SumitDalavi/containerized-ai-agent-poc?color=blue&logo=github)](https://github.com/SumitDalavi/containerized-ai-agent-poc/releases)
+[![CI Pipeline](https://github.com/SumitDalavi/containerized-ai-agent-poc/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/SumitDalavi/containerized-ai-agent-poc/actions/workflows/ci.yml)
+[![Release](https://img.shields.io/github/v/release/SumitDalavi/containerized-ai-agent-poc?color=0969da&label=release&logo=github)](https://github.com/SumitDalavi/containerized-ai-agent-poc/releases)
 [![Release Workflow](https://github.com/SumitDalavi/containerized-ai-agent-poc/actions/workflows/release.yml/badge.svg)](https://github.com/SumitDalavi/containerized-ai-agent-poc/actions/workflows/release.yml)
-[![SBOM](https://img.shields.io/badge/SBOM-SPDX%20JSON-blueviolet?logo=spdx)](https://github.com/SumitDalavi/containerized-ai-agent-poc/releases)
-
-[![Release](https://img.shields.io/github/v/release/SumitDalavi/containerized-ai-agent-poc?color=blue&logo=github)](https://github.com/SumitDalavi/containerized-ai-agent-poc/releases)
-[![SBOM](https://img.shields.io/badge/SBOM-SPDX%20JSON-blueviolet?logo=spdx)](https://github.com/SumitDalavi/containerized-ai-agent-poc/releases)
+[![GHCR Container](https://img.shields.io/badge/ghcr.io-v0.2.0-blue?logo=docker&logoColor=white)](https://github.com/SumitDalavi/containerized-ai-agent-poc/pkgs/container/containerized-ai-agent-poc)
+[![Python](https://img.shields.io/badge/Python-3.11+-3776AB?logo=python&logoColor=white)](https://www.python.org)
+[![SBOM](https://img.shields.io/badge/SBOM-SPDX%202.3-blueviolet?logo=spdx)](https://github.com/SumitDalavi/containerized-ai-agent-poc/releases/tag/v0.2.0)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
 > A microservice-based architecture for deploying AI Agents. Built with FastAPI, Python, and Docker to demonstrate scalable, production-ready AI deployment patterns.
 
 > **⚠️ PoC Note:** This project uses a simulated async logic engine — no real LLM backend is connected. It demonstrates containerization patterns, API design, and production-ready project structure.
-
 
 ## The Problem
 
@@ -54,7 +53,6 @@ Access the interactive Swagger UI at `http://localhost:8000/docs` to interact wi
 ## 📁 Project Structure
 
 For a detailed breakdown of the codebase and technical design decisions, please refer to the [Architecture Documentation](docs/ARCHITECTURE.md).
-
 
 ## 📋 Prerequisites
 
@@ -130,7 +128,6 @@ docker-compose down
 - **CI Pipeline Remediation:** Successfully resolved all CI/CD pipeline failures.
 - **Specific Fix:** Fixed async test failures by integrating pytest-asyncio.
 - **Status:** 🟩 Passing
-
 
 ## 📖 Overview
 
