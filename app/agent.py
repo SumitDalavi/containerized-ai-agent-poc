@@ -1,12 +1,24 @@
+import os
 import asyncio
 from typing import Dict
 from .models import TaskRequest, TaskResponse
 
+def is_live_openai_key(key: str = None) -> bool:
+    if key is None:
+        key = os.getenv("OPENAI_API_KEY", "")
+    return bool(key) and key.startswith("sk-") and not key.startswith("sk-dummy") and len(key) >= 20
+
+def detect_mode():
+    return {
+        "ai": "live" if is_live_openai_key() else "mock",
+        "agent": "containerized-poc"
+    }
+
 class SimpleAIAgent:
     """
-    A simulated AI Agent that processes tasks.
-    In a real-world scenario, this would connect to an LLM provider (OpenAI, Gemini, etc.)
-    or run a local model.
+    Progressive Credential Loading (PCL) AI Agent:
+    - Default (Mock Mode): Runs locally with rule-based heuristics and zero dependencies.
+    - Live Mode: When OPENAI_API_KEY is supplied, automatically queries OpenAI chat completions.
     """
     
     def __init__(self, agent_name: str = "MockAgent-01"):
@@ -15,10 +27,32 @@ class SimpleAIAgent:
 
     async def process_task(self, request: TaskRequest) -> TaskResponse:
         """
-        Simulate processing a task asynchronously.
+        Process a task asynchronously (live OpenAI if key provided, rule-based mock otherwise).
         """
-        # Simulate thinking delay
-        await asyncio.sleep(1.5)
+        apiKey = os.getenv("OPENAI_API_KEY", "")
+        if is_live_openai_key(apiKey):
+            try:
+                from openai import OpenAI
+                client = OpenAI(api_key=apiKey)
+                loop = asyncio.get_event_loop()
+                completion = await loop.run_in_executor(
+                    None,
+                    lambda: client.chat.completions.create(
+                        model="gpt-4o-mini",
+                        messages=[{"role": "user", "content": request.prompt}],
+                        max_tokens=500
+                    )
+                )
+                result_text = completion.choices[0].message.content or ""
+                response = TaskResponse(task_id=request.task_id, status="completed", result=result_text)
+                self.history[request.task_id] = response
+                return response
+            except Exception:
+                # Graceful fallback to mock logic on provider failure
+                pass
+
+        # Simulate thinking delay (non-blocking)
+        await asyncio.sleep(0.05)
         
         # A very basic rule-based mock logic
         lower_prompt = request.prompt.lower()

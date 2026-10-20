@@ -12,12 +12,18 @@ from sandbox.executor import run_in_sandbox, ALLOWED_COMMANDS
 from tools.file_tool import read_file, write_file, list_files
 from monitoring.audit_log import log_tool_call, log_agent_decision, log_session_start, log_session_end
 
+def is_live_openai_key(key: str = None) -> bool:
+    if key is None:
+        key = os.getenv("OPENAI_API_KEY", "")
+    return bool(key) and key.startswith("sk-") and not key.startswith("sk-dummy") and len(key) >= 20
+
 try:
     from openai import OpenAI
-    _client = OpenAI(api_key=os.getenv("OPENAI_API_KEY", ""))
-    _LLM = bool(os.getenv("OPENAI_API_KEY"))
+    _LLM = is_live_openai_key()
+    _client = OpenAI(api_key=os.getenv("OPENAI_API_KEY", "")) if _LLM else None
 except Exception:
     _LLM = False
+    _client = None
 
 
 SYSTEM_PROMPT = """You are a sandboxed AI agent. You can use tools to complete tasks.
