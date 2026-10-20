@@ -1,5 +1,3 @@
-> **NOTE:** This repository is an archival lab or partial prototype. It is not actively maintained and should not be used as a reference for production-grade deployments or performance benchmarks.
-
 # Containerized AI Agent PoC 🚀
 
 [![CI Pipeline](https://github.com/SumitDalavi/containerized-ai-agent-poc/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/SumitDalavi/containerized-ai-agent-poc/actions/workflows/ci.yml)
@@ -12,7 +10,7 @@
 
 > A microservice-based architecture for deploying AI Agents. Built with FastAPI, Python, and Docker to demonstrate scalable, production-ready AI deployment patterns.
 
-> **⚠️ PoC Note:** This project uses a simulated async logic engine — no real LLM backend is connected. It demonstrates containerization patterns, API design, and production-ready project structure.
+> **⚡ Progressive Execution:** Supports zero-config async simulation out-of-the-box (Tier 1) and connects to live OpenAI LLM backends when API keys are configured (Tier 2/3). See [Execution Tiers](#-progressive-credential-loading--execution-tiers).
 
 ## The Problem
 
@@ -123,12 +121,6 @@ docker-compose down
 
 *Built with a focus on robust patterns, not toy demos.*
 
-## CI & Reliability Updates (August 2026)
-
-- **CI Pipeline Remediation:** Successfully resolved all CI/CD pipeline failures.
-- **Specific Fix:** Fixed async test failures by integrating pytest-asyncio.
-- **Status:** 🟩 Passing
-
 ## 📖 Overview
 
 This project showcases a scalable approach to building and deploying AI agents. By wrapping the agent's logic in a high-performance REST API (FastAPI) and containerizing the entire application (Docker), we ensure the agent is easily deployable, testable, and capable of integrating into larger, cloud-native systems.
@@ -157,10 +149,10 @@ Each release automatically:
 ### Verifying the Release
 ```bash
 # Verify release via GitHub CLI
-gh release view v0.1.0 --repo SumitDalavi/containerized-ai-agent-poc
+gh release view v0.2.0 --repo SumitDalavi/containerized-ai-agent-poc
 
 # Download and inspect SBOM
-gh release download v0.1.0 --repo SumitDalavi/containerized-ai-agent-poc --pattern "sbom.spdx.json"
+gh release download v0.2.0 --repo SumitDalavi/containerized-ai-agent-poc --pattern "sbom.spdx.json"
 cat sbom.spdx.json | jq .
 ```
 
@@ -189,9 +181,9 @@ Enterprise deployment with production-grade backends, security scans, and contai
 - **Production Orchestration:** Mount secrets via Kubernetes Secrets or cloud secret managers with atomic config reload support.
 - **Release Verification:** Checksums and SPDX SBOM available on [GitHub Releases](https://github.com/SumitDalavi/containerized-ai-agent-poc/releases).
 
-## Documentation
+## 📚 Documentation
 
-- [Architecture](docs/ARCHITECTURE.md)
-- [Runbook](docs/runbook.md)
-- [Decisions](docs/decisions.md)
-- [Changelog](docs/changelog.md)
+- [Architecture](docs/ARCHITECTURE.md) — System diagram and component details
+- [Runbook](docs/runbook.md) — Setup, commands, and expected outputs
+- [Decisions](docs/decisions.md) — ADRs for agent deployment patterns
+- [Changelog](docs/changelog.md) — Change history
